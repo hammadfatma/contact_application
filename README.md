@@ -15,3 +15,9 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 # screen_shots
+<img src="home page.jpg" width="200px" height="200px">
+<img src="add page.jpg" width="200px" height="200px">
+<img src="after add.jpg" width="200px" height="200px">
+<img src="edit page.jpg" width="200px" height="200px">
+<img src="after edit.jpg" width="200px" height="200px">
+<img src="after delete.jpg" width="200px" height="200px">
