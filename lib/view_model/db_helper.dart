@@ -5,7 +5,7 @@ class SqfliteHelper {
   static late Database database;
   static List<Map> contactsList = [];
   //create database
-  static void createDatabase() async {
+  static Future<void> createDatabase() async {
     await openDatabase(
       'contact.db',
       version: 1,
@@ -30,7 +30,7 @@ class SqfliteHelper {
   }
 
   //insert record
-  static void insertToDatabase({
+  static Future<void> insertToDatabase({
     required ContactModel contactModel,
   }) async {
     await database.transaction((txn) async {
@@ -47,7 +47,7 @@ class SqfliteHelper {
   }
 
   //get record
-  static void getDataFromDatabase(database) async {
+  static Future<void> getDataFromDatabase(database) async {
     contactsList = [];
     await database.rawQuery('SELECT * FROM contacts').then((value) {
       value.forEach((element) {
@@ -59,26 +59,27 @@ class SqfliteHelper {
   }
 
   //update record
-  static void updateData({
+  static Future<void> updateData({
     required ContactModel contactModel,
   }) async {
     await database.rawUpdate(
       'UPDATE contacts SET name = ?, phone = ?, email = ? WHERE id = ?',
       [
-        (contactModel.name),
-        (contactModel.phone),
-        (contactModel.email),
-        contactModel.id
+        contactModel.name,
+        contactModel.phone,
+        contactModel.email,
+        contactModel.id,
       ],
     ).then((value) {
       getDataFromDatabase(database);
+      print('$value updated successfully');
     }).catchError((error) {
       print('Error When Updating Record ${error.toString()}');
     });
   }
 
   //delete record
-  static void deleteData({
+  static Future<void> deleteData({
     required ContactModel contactModel,
   }) async {
     await database.rawDelete(

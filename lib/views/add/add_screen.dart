@@ -107,7 +107,6 @@ class _AddScreenState extends State<AddScreen> {
                         name: nameController.text,
                         phone: phoneController.text,
                         email: emailController.text,
-                        id: 1,
                       );
                       SqfliteHelper.insertToDatabase(
                           contactModel: contactModel);

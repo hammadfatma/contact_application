@@ -4,8 +4,8 @@ import 'package:contact_book/views/add/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
 class EditScreen extends StatefulWidget {
-  const EditScreen({super.key});
-
+  const EditScreen({super.key, required this.id});
+  final int id;
   @override
   State<EditScreen> createState() => _EditScreenState();
 }
@@ -103,13 +103,13 @@ class _EditScreenState extends State<EditScreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      ContactModel contactModel = ContactModel(
+                      ContactModel model = ContactModel(
                         name: nameController.text,
                         phone: phoneController.text,
                         email: emailController.text,
-                        id: 1,
+                        id: widget.id,
                       );
-                      SqfliteHelper.updateData(contactModel: contactModel);
+                      SqfliteHelper.updateData(contactModel: model);
                       Navigator.of(context).pop();
                     }
                   },

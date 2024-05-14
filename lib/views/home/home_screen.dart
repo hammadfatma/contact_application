@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Home Screen'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           IconButton(
             onPressed: () {
@@ -32,7 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 SqfliteHelper.getDataFromDatabase(SqfliteHelper.database);
               });
             },
-            icon: const Icon(Icons.refresh),
+            icon: const Icon(
+              Icons.refresh,
+              color: Colors.deepPurple,
+            ),
           ),
           Expanded(
             child: contactsBuilder(

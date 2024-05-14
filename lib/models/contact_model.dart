@@ -1,11 +1,11 @@
 class ContactModel {
-  final int id;
+  final int? id;
   final String name;
   final String phone;
   final String email;
 
   ContactModel({
-    required this.id,
+    this.id,
     required this.name,
     required this.phone,
     required this.email,
