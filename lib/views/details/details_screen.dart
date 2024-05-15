@@ -1,7 +1,8 @@
 import 'package:contact_book/models/contact_model.dart';
-import 'package:contact_book/view_model/db_helper.dart';
+import 'package:contact_book/view_model/cubit/contact_cubit.dart';
 import 'package:contact_book/views/edit/edit_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailsScreen extends StatelessWidget {
   const DetailsScreen({super.key, required this.contactModel});
@@ -106,8 +107,8 @@ class DetailsScreen extends StatelessWidget {
                           height: 45.0,
                           child: MaterialButton(
                             onPressed: () {
-                              SqfliteHelper.deleteData(
-                                  contactModel: contactModel);
+                              BlocProvider.of<ContactCubit>(context)
+                                  .deleteData(contactModel: contactModel);
                               Navigator.pop(context);
                             },
                             child: const Text(

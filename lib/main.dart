@@ -1,8 +1,13 @@
+import 'package:contact_book/view_model/cubit/contact_cubit.dart';
 import 'package:contact_book/views/home/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(BlocProvider(
+    create: (context) => ContactCubit()..createDatabase(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

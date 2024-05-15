@@ -1,8 +1,9 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:contact_book/models/contact_model.dart';
-import 'package:contact_book/view_model/db_helper.dart';
+import 'package:contact_book/view_model/cubit/contact_cubit.dart';
 import 'package:contact_book/views/details/details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Widget buildContactItem(ContactModel model, context) => GestureDetector(
       onTap: () {
@@ -16,7 +17,8 @@ Widget buildContactItem(ContactModel model, context) => GestureDetector(
       child: Dismissible(
         key: Key(model.id.toString()),
         onDismissed: (direction) {
-          SqfliteHelper.deleteData(contactModel: model);
+          BlocProvider.of<ContactCubit>(context)
+              .deleteData(contactModel: model);
         },
         child: Padding(
           padding: const EdgeInsets.all(20.0),

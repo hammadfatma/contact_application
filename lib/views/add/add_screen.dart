@@ -1,7 +1,8 @@
 import 'package:contact_book/models/contact_model.dart';
-import 'package:contact_book/view_model/db_helper.dart';
+import 'package:contact_book/view_model/cubit/contact_cubit.dart';
 import 'package:contact_book/views/add/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddScreen extends StatefulWidget {
   const AddScreen({super.key});
@@ -108,8 +109,8 @@ class _AddScreenState extends State<AddScreen> {
                         phone: phoneController.text,
                         email: emailController.text,
                       );
-                      SqfliteHelper.insertToDatabase(
-                          contactModel: contactModel);
+                      BlocProvider.of<ContactCubit>(context)
+                          .insertToDatabase(contactModel: contactModel);
                       Navigator.of(context).pop();
                     }
                   },

@@ -1,7 +1,8 @@
 import 'package:contact_book/models/contact_model.dart';
-import 'package:contact_book/view_model/db_helper.dart';
+import 'package:contact_book/view_model/cubit/contact_cubit.dart';
 import 'package:contact_book/views/add/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class EditScreen extends StatefulWidget {
   const EditScreen({super.key, required this.id});
@@ -109,8 +110,10 @@ class _EditScreenState extends State<EditScreen> {
                         email: emailController.text,
                         id: widget.id,
                       );
-                      SqfliteHelper.updateData(contactModel: model);
+                      BlocProvider.of<ContactCubit>(context)
+                          .updateData(contactModel: model);
                       Navigator.of(context).pop();
+                      //Navigator.of(context).pop();
                     }
                   },
                   child: const Text('SAVE'),
