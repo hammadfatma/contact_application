@@ -16,5 +16,8 @@ For help getting started with Flutter development, view the
 samples, guidance on mobile development, and a full API reference.
 
 # video
-Using sqflite without cubit (just with setState())
+Using sqflite with setState (state management)
 <video src='https://github.com/hammadfatma/contact_application/assets/97297539/8fbbf699-5239-4fda-9b18-bea94bb06687' width=180/>
+
+Using sqflite with cubit (state management)
+<video src='https://github.com/hammadfatma/contact_application/assets/97297539/23d4d088-16f9-4915-9ad8-03ce1cc54390' width=180/>
