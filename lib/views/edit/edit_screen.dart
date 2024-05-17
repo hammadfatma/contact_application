@@ -113,7 +113,7 @@ class _EditScreenState extends State<EditScreen> {
                       BlocProvider.of<ContactCubit>(context)
                           .updateData(contactModel: model);
                       Navigator.of(context).pop();
-                      //Navigator.of(context).pop();
+                      Navigator.of(context).pop();
                     }
                   },
                   child: const Text('SAVE'),
